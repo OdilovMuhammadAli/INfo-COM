@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GameCore</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+
+      body {
+        background-color: #0a0a0a;
+        margin: 0;
+        color: #000000;
+        transition: background-color 0.3s, color 0.3s;
+        color: #f0f0f0;
+      }
+
+      header {
+        background-color: #111;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 2px solid #cc0000;
+      }
+
+      .logo {
+        font-size: 28px;
+        color: #cc0000;
+        font-weight: bold;
+      }
+
+      nav a {
+        margin-left: 20px;
+        color: #ddd;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s;
+      }
+
+      nav a:hover {
+        color: #cc0000;
+      }
+
+      .hero {
+        position: relative;
+        height: 500px;
+        overflow: hidden;
+      }
+
+      .hero img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(50%);
+      }
+
+      .section {
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        transform: translateY(-50%);
+        color: #fff;
+      }
+
+      .section h1 {
+        font-size: 48px;
+        color: #22acc1;
+        margin-bottom: 10px;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      }
+
+      .section p {
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+
+      .button {
+        background-color: #cc0000;
+        color: #fff;
+        padding: 12px 24px;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 5px;
+        box-shadow: 0 0 8px #cc0000;
+        transition: box-shadow 0.3s, transform 0.3s;
+      }
+
+      .button:hover {
+        box-shadow: 0 0 20px #ff1a1a;
+        transform: scale(1.05);
+      }
+
+      .krasava {
+        padding: 60px 20px;
+        border-top: 1px solid #222;
+      }
+
+      .krasava h2 {
+        font-size: 32px;
+        color: #9a08f5;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      .game {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+        text-align: left;
+      }
+
+      .game img {
+        width: 300px;
+        border-radius: 10px;
+      }
+
+      .game div {
+        max-width: 500px;
+      }
+
+      .game h3 {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .game p {
+        font-size: 16px;
+        margin-bottom: 15px;
+      }
+
+      footer {
+        background-color: #111;
+        text-align: center;
+        padding: 20px;
+        border-top: 2px solid #cc0000;
+        margin-top: 40px;
+      }
+
+      .flash {
+        opacity: 0;
+        position: absolute;
+        left: 0;
+        z-index: 1;
+        top: 0;
+        box-shadow: 0 0 0 9999px #0000004c;
+        pointer-events: none;
+      }
+      body {
+        margin: 0;
+        font-family: sans-serif;
+        background-color: #ffffff;
+        color: #000000;
+        transition: background-color 0.3s, color 0.3s;
+      }
+      body.dark .flash {
+        opacity: 1;
+      }
+
+      body.dark {
+        background-color: #000000;
+        color: #ffffff;
+      }
+
+      body.dark {
+        background-color: #000000;
+      }
+
+      body.dark button {
+        background: #ddd;
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="logo">GameCore</div>
+      <nav>
+        <a href="#home">Главная</a>
+        <a href="#shooters">Шутеры</a>
+        <a href="#racing">Гонки</a>
+        <a href="#action">Экшен</a>
+      </nav>
+
+      <img class="flash" src="./images/flashlight.webp" alt="flashlight" />
+
+      <!-- btn -->
+      <button id="button">🌕</button>
+    </header>
+    <section class="hero" id="home">
+      <img
+        data-aos="fade-right"
+        data-aos-duration="2000"
+        src="https://preview.redd.it/xbox-theme-v0-ps6mk760q5wb1.jpg?width=640&crop=smart&auto=webp&s=50541306f808893c9268ef4ae494737a30cff7f9"
+        alt="Обои"
+      />
+      <div class="section">
+        <h1>Погрузись в мир лучших игр</h1>
+        <p data-aos="zoom-out" data-aos-duration="2000">
+          Шутеры, гонки и экшен ждут тебя
+        </p>
+        <p data-aos="zoom-out" data-aos-duration="2000">
+          Разработчик: Одилов Мухаммад Али
+        </p>
+        <a class="button" href="#shooters">Начать</a>
+      </div>
+    </section>
+
+    <section class="krasava" id="shooters">
+      <h2 data-aos="fade-left" data-aos-duration="2000">Шутеры</h2>
+      <div class="game">
+        <img
+          id="img"
+          data-aos="fade-right"
+          data-aos-duration="3000"
+          src="./images/1.png"
+          alt="Shooter"
+        />
+        <div>
+          <h3 data-aos="flip-left" data-aos-duration="2000">
+            Speacial Forces Group 2
+          </h3>
+          <p data-aos="zoom-out" data-aos-duration="2000">
+            3D Шутер от первого лица -Играйте онлайн или с ботами
+            -Противостояние двух команд. -9 режимов игры
+            (Классический,Воскрещение,Захват флага,Режим зомби,Режим бомба,
+            Режим ножи, Бой насмерть, Гонка вооружений, Режим снайпер)
+          </p>
+          <a class="button">Играть</a>
+          <button class="button btn">1</button>
+          <button class="button btn">2</button>
+          <button class="button btn">3</button>
+          <button class="button btn">4</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="krasava" id="racing">
+      <h2 data-aos="fade-left" data-aos-duration="2000">Гонки</h2>
+      <div class="game">
+        <img
+          id="img-racing"
+          data-aos="fade-right"
+          data-aos-duration="2000"
+          src="https://media.senscritique.com/media/000007646739/source_big/Hill_Climb_Racing.png"
+          alt="Racing"
+        />
+        <div>
+          <h3 data-aos="flip-left" data-aos-duration="2000">
+            Hill-Climb-Racing
+          </h3>
+          <p data-aos="zoom-out" data-aos-duration="2000">
+            Ультимативные уличные гонки. Почувствуй адреналин на высоких
+            скоростях. с Hill-Climb-Racing!!
+          </p>
+          <a
+            class="button"
+            href="#"
+            data-aos="zoom-in-left"
+            data-aos-duration="2000"
+            >Играть</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="krasava" id="action">
+      <h2 data-aos="fade-left" data-aos-duration="2000">Экшен</h2>
+      <div class="game">
+        <img
+          data-aos="fade-right"
+          data-aos-duration="2000"
+          src="https://www.game-ost.ru/static/covers_soundtracks/4/6/461605_129467.jpg"
+          alt="ekshen"
+        />
+        <div>
+          <h3 data-aos="flip-left" data-aos-duration="2000">Shadow Fight 2</h3>
+          <p data-aos="zoom-out" data-aos-duration="2000">
+            Shadow Fight 2 - это зубодробительная смесь файтинга и РПГ. Вы не
+            просто деретесь в лучших традициях файтингов, но и одеваете своего
+            персонажа, покупаете оружие, повышаете параметры и изучаете новые
+            способности и удары.Мир захватили демоны - души воинов прошлого и их
+            боссы.
+          </p>
+          <a
+            class="button"
+            href="#"
+            data-aos="zoom-in-left"
+            data-aos-duration="2000"
+            >Играть</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="krasava" id="action">
+      <h2 data-aos="fade-left" data-aos-duration="2000">Стратегия</h2>
+      <div class="game">
+        <img
+          data-aos="fade-right"
+          data-aos-duration="2000"
+          src="https://th.bing.com/th/id/R.2e921762c75c5311652186c9e223b457?rik=N4WFi10Eg1x9cw&riu=http%3a%2f%2fwww.nils-snake.de%2fwp-content%2fuploads%2fkingdom-rush-1.png&ehk=Eokqq5b3Uepww4ItlgtzxUwiF9oaG0j4maLYL9z4e50%3d&risl=&pid=ImgRaw&r=0"
+          alt="kindom rush"
+        />
+        <div>
+          <h3 data-aos="flip-left" data-aos-duration="2000">Kindom Rush</h3>
+          <p data-aos="zoom-out" data-aos-duration="2000">
+            Самая чертовски захватывающая серия игр в жанре башенной защиты
+            возвращается. Добро пожаловать в Kingdom Rush: Frontiers! Серия
+            стала еще мрачнее и круче благодаря Kingdom Rush: Frontiers серия
+            стала еще более масштабной и крутой.
+          </p>
+          <a
+            class="button"
+            href="#"
+            data-aos="zoom-in-left"
+            data-aos-duration="2000"
+            >Играть</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p data-aos="zoom-out" data-aos-duration="2000">
+        @ 2025 GameCore.Тут вы найдёте топ самых лучших игры на свете. Я это
+        обещаю вам😁🙃
+      </p>
+    </footer>
+    <!-- js -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <script>
+      const elImg = document.getElementById("img");
+      document.querySelectorAll(".btn").forEach((el) => {
+        el.addEventListener("click", (e) => {
+          elImg.src = `/images/${e.target.innerText}.png`;
+        });
+      });
+      button.onclick = () => {
+        document.body.classList.toggle("dark");
+        button.textContent = document.body.classList("dark");
+      };
+      window.addEventListener("DOMContentLoaded", () => {
+        const flash = document.querySelector(".flash");
+        const button = document.getElementById("button");
+
+        document.onmousemove = ({ clientX, clientY }) => {
+          flash.style.top = clientY - 125 + "px";
+          flash.style.left = clientX - 125 + "px";
+        };
+      });
+    </script>
+  </body>
+</html>
